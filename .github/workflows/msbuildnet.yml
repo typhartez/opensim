@@ -2,15 +2,16 @@ name: .msbuildnet6
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "master", "fork-ci" ]
     paths:
       - '**.cs'
+      - '.github/workflows/msbuildnet.yml'
   workflow_dispatch:
 
 jobs:
   build:
 
-    if: github.repository == 'opensim/opensim'
+    if: github.repository == 'typhartez/opensim' || github.repository == 'opensim/opensim'
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
