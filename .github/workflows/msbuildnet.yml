@@ -13,6 +13,8 @@ jobs:
 
     if: github.repository == 'typhartez/opensim' || github.repository == 'opensim/opensim'
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
     - uses: actions/checkout@v4
     - name: shortsha
@@ -32,7 +34,7 @@ jobs:
     - name: release
       if: success()
       run: zip -r LastDotNetBuild.zip bin ThirdPartyLicenses README.md CONTRIBUTORS.txt LICENSE.txt 
-    - uses: softprops/action-gh-release@v1
+    - uses: softprops/action-gh-release@v2
       if: success()
       with:
           tag_name: r${{ steps.vars.outputs.sha_short }}
