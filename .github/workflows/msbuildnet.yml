@@ -38,6 +38,7 @@ jobs:
       if: success()
       with:
           tag_name: r${{ steps.vars.outputs.sha_short }}
+          target_commitish: ${{ github.sha }}
           name: LastDotNetAutoBuild
           files: LastDotNetBuild.zip
 
